@@ -26,6 +26,7 @@ def upgrade():
                     sa.Column('author', sa.String(length=100), nullable=False),
                     sa.Column('genre', sa.String(length=20)),
                     sa.Column('year_published', sa.String(length=10)),
+                    sa.Column('summary', sa.Text, default='', nullable=False),
                     sa.Column('created_at', sa.TIMESTAMP(timezone=True), default=datetime.now()),
                     sa.Column('updated_at', sa.TIMESTAMP(timezone=True), default=datetime.now(), onupdate=datetime.now()),
                     sa.PrimaryKeyConstraint('id')
@@ -40,7 +41,7 @@ def upgrade():
                     sa.Column('created_at', sa.TIMESTAMP(timezone=True), default=datetime.now()),
                     sa.Column('updated_at', sa.TIMESTAMP(timezone=True), default=datetime.now(), onupdate=datetime.now()),
                     sa.PrimaryKeyConstraint('id'),
-                    sa.ForeignKeyConstraint(['book_id'], ['books.id'], )
+                    sa.ForeignKeyConstraint(['book_id'], ['books.id'])
                     )
 
 
