@@ -1,0 +1,1 @@
+gunicorn app.server:app -w 4
