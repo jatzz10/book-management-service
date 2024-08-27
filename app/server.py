@@ -1,7 +1,7 @@
-from flask import jsonify, Blueprint
+from flask import jsonify
 from app import app
-from app.routes.books import books_resources
-from app.routes.reviews import reviews_resources
+from app.routes.books.books import books_resources
+from app.routes.books.reviews import reviews_resources
 
 
 app.register_blueprint(books_resources, url_prefix='/books')

@@ -15,6 +15,7 @@ class BookController:
         return jsonify(book.to_dict())
 
     def create_book(self):
+        # To Do: Add validations
         data = request.get_json()
         new_book = Book(**data)
         db.session.add(new_book)

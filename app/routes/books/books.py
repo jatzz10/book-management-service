@@ -1,15 +1,11 @@
 from flask import Blueprint
-from app import app
-from app.controllers.books import BookController
+from app.controllers.books.books import BookController
 
 
 books_resources = Blueprint("books_resources", __name__)
-
-
 book_controller = BookController()
 
 
-# Define routes
 @books_resources.route("/", methods=["POST"])
 def create_book():
     return book_controller.create_book()

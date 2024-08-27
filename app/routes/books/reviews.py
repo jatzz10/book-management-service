@@ -1,12 +1,8 @@
-from flask import jsonify, Blueprint
-from app import app
-from app.models.reviews import Review
-from app.controllers.reviews import ReviewController
+from flask import Blueprint
+from app.controllers.books.reviews import ReviewController
 
 
 reviews_resources = Blueprint("reviews_resources", __name__)
-
-
 review_controller = ReviewController()
 
 
