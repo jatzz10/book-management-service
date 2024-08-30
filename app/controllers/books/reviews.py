@@ -14,11 +14,11 @@ class ReviewController:
         review = Review(book_id=book_id, **data)
         db.session.add(review)
         db.session.commit()
-        return jsonify({"message": "Review created successfully!"})
+        return jsonify({"message": "Review created successfully!"}), 201
 
     def get_all_reviews(self, book_id):
         book = Book.query.get(book_id)
         if book is None:
             return jsonify({"error": "Book not found"}), 404
         reviews = Review.query.filter(Review.book_id == book_id).all()
-        return jsonify([review.to_dict() for review in reviews])
+        return jsonify([review.to_dict() for review in reviews]), 200

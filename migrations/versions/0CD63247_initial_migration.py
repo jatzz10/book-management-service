@@ -20,6 +20,16 @@ depends_on = None
 
 
 def upgrade():
+    op.create_table('users',
+                    sa.Column('id', sa.Integer(), nullable=False),
+                    sa.Column('full_name', sa.String(length=80), nullable=False),
+                    sa.Column('password', sa.String(length=256), nullable=False),
+                    sa.Column('email_id', sa.String(length=50), nullable=False),
+                    sa.Column('created_at', sa.TIMESTAMP(timezone=True), default=datetime.now()),
+                    sa.Column('updated_at', sa.TIMESTAMP(timezone=True), default=datetime.now(), onupdate=datetime.now()),
+                    sa.PrimaryKeyConstraint('id')
+                    )
+
     op.create_table('books',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('title', sa.String(length=150), nullable=False),
@@ -35,13 +45,12 @@ def upgrade():
     op.create_table('reviews',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('book_id', sa.Integer(), sa.ForeignKey('books.id')),
-                    sa.Column('user_id', sa.String(length=50), nullable=False, default=''),
+                    sa.Column('user_id', sa.String(length=50), sa.ForeignKey('users.id')),
                     sa.Column('review_text', sa.Text(), nullable=False, default=''),
                     sa.Column('rating', sa.Enum(RatingEnum), nullable=False),
                     sa.Column('created_at', sa.TIMESTAMP(timezone=True), default=datetime.now()),
                     sa.Column('updated_at', sa.TIMESTAMP(timezone=True), default=datetime.now(), onupdate=datetime.now()),
-                    sa.PrimaryKeyConstraint('id'),
-                    sa.ForeignKeyConstraint(['book_id'], ['books.id'])
+                    sa.PrimaryKeyConstraint('id')
                     )
 
 
