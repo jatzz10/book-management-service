@@ -15,7 +15,7 @@ class Review(db.Model):
     __tablename__ = 'reviews'
     id = db.Column(db.Integer, primary_key=True)
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
-    user_id = db.Column(db.String(50), default='', nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     review_text = db.Column(db.Text, default='', nullable=False)
     rating = db.Column(db.Enum(RatingEnum), nullable=False)
     created_at = db.Column(db.TIMESTAMP(timezone=True), default=datetime.now())

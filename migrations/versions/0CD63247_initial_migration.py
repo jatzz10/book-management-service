@@ -45,7 +45,7 @@ def upgrade():
     op.create_table('reviews',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('book_id', sa.Integer(), sa.ForeignKey('books.id')),
-                    sa.Column('user_id', sa.String(length=50), sa.ForeignKey('users.id')),
+                    sa.Column('user_id', sa.Integer(), sa.ForeignKey('users.id')),
                     sa.Column('review_text', sa.Text(), nullable=False, default=''),
                     sa.Column('rating', sa.Enum(RatingEnum), nullable=False),
                     sa.Column('created_at', sa.TIMESTAMP(timezone=True), default=datetime.now()),
