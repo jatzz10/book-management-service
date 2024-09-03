@@ -1,1 +1,1 @@
-gunicorn app.server:app -w 4
+gunicorn app.server:app -b 0.0.0.0:8000
