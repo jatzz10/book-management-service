@@ -57,3 +57,4 @@ def upgrade():
 def downgrade():
     op.drop_table('reviews')
     op.drop_table('books')
+    op.drop_table('users')
