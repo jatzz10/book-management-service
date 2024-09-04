@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # Run the script when the container starts
-CMD ["/bin/bash", "run.sh"]
+CMD ["/bin/bash", "docker-entrypoint.sh"]
